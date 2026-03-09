@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Knock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f7f6f3; --surface: #ffffff; --text: #1a1a18; --dim: #5a5a54;
+      --muted: #a8a89e; --accent: #2d6a4f; --accent-light: #e8f5ee;
+      --accent-border: #c3e6d0; --border: #e8e7e2;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); padding: 40px 24px 80px; }
+    .wrap { max-width: 580px; margin: 0 auto; }
+    nav { display: flex; align-items: center; gap: 12px; margin-bottom: 56px; }
+    nav a { font-size: 13px; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    nav a:hover { color: var(--accent); }
+    nav svg { width: 14px; height: 14px; }
+    .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    h1 { font-family: 'Fraunces', serif; font-size: clamp(32px, 6vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
+    .sub { font-size: 16px; font-weight: 300; color: var(--dim); line-height: 1.6; margin-bottom: 40px; }
+    .contact-card {
+      background: var(--accent-light); border: 1px solid var(--accent-border);
+      border-radius: 20px; padding: 28px 32px; margin-bottom: 40px;
+    }
+    .contact-card h2 { font-size: 15px; font-weight: 600; color: #1b4332; margin-bottom: 10px; }
+    .contact-card p { font-size: 14px; color: #2d6a4f; font-weight: 300; line-height: 1.7; margin-bottom: 10px; }
+    .contact-card p:last-of-type { margin-bottom: 16px; }
+    .email-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #2d6a4f; color: white; font-size: 14px; font-weight: 500;
+      padding: 12px 20px; border-radius: 12px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .email-link:hover { background: #1b4332; }
+    .email-link svg { width: 15px; height: 15px; }
+    .include { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; margin-bottom: 40px; }
+    .include h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 12px; }
+    .include ul { padding-left: 18px; }
+    .include li { font-size: 13px; font-weight: 300; color: var(--dim); line-height: 1.8; }
+    .faq-title { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; margin-bottom: 10px; }
+    .faq-q { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+    .faq-a { font-size: 13px; font-weight: 300; color: var(--dim); line-height: 1.75; }
+    .faq-a a { color: var(--accent); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+    footer { margin-top: 64px; font-size: 11px; color: var(--muted); }
+    footer a { color: inherit; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        Knock
+      </a>
+    </nav>
+
+    <div class="eyebrow">Help</div>
+    <h1>Support</h1>
+    <p class="sub">For help with Knock, reach out — we'll get back to you within 2 business days.</p>
+
+    <div class="contact-card">
+      <h2>Get in touch</h2>
+      <p>Questions about the app, your account, data deletion, or anything else? Email us directly.</p>
+      <a class="email-link" href="mailto:mra454@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        mra454@gmail.com
+      </a>
+    </div>
+
+    <div class="include">
+      <h2>What to include</h2>
+      <ul>
+        <li>Your device type (e.g. iPhone 14)</li>
+        <li>iOS version</li>
+        <li>A short description of the issue</li>
+        <li>Screenshots if relevant</li>
+      </ul>
+    </div>
+
+    <div class="faq-title">Common questions</div>
+
+    <div class="faq-item">
+      <div class="faq-q">I don't see anyone nearby</div>
+      <div class="faq-a">Make sure you've checked in to a place and that someone else is also checked in to the same venue. The lobby will appear empty if no one else is present.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Location isn't working</div>
+      <div class="faq-a">Check that location access is enabled for Knock while using the app. Go to Settings → Privacy & Security → Location Services → Knock → set to "While Using the App."</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Messages or knocks are delayed</div>
+      <div class="faq-a">A weak connection can affect real-time updates. Try reopening the app or switching from Wi-Fi to cellular (or vice versa).</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is Knock anonymous?</div>
+      <div class="faq-a">Yes. No name, email, or phone number is required. You choose a nickname. Revealing anything more — your name, photo, or contact — is always optional and requires mutual consent from both users.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I delete my account?</div>
+      <div class="faq-a">Email <a href="mailto:mra454@gmail.com">mra454@gmail.com</a> and include your anonymous user ID (found in app settings). We'll delete your account and data promptly.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I report a user or inappropriate content?</div>
+      <div class="faq-a">Email <a href="mailto:mra454@gmail.com">mra454@gmail.com</a> with as much detail as possible. We take safety seriously and review all reports.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What data does Knock collect?</div>
+      <div class="faq-a">See our <a href="/privacy">Privacy Policy</a> for full details. Short version: anonymous account, optional nickname and hints, temporary venue presence, and knock/message records. No real names, no phone numbers, no background location tracking.</div>
+    </div>
+
+    <footer>© 2025 Knock &nbsp;·&nbsp; <a href="/privacy">Privacy Policy</a></footer>
+  </div>
+</body>
+</html>
