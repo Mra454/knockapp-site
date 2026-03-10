@@ -3,123 +3,357 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support — Knock</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Support, Knock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg: #f7f6f3; --surface: #ffffff; --text: #1a1a18; --dim: #5a5a54;
-      --muted: #a8a89e; --accent: #2d6a4f; --accent-light: #e8f5ee;
-      --accent-border: #c3e6d0; --border: #e8e7e2;
+      --bg:           #eaecec;
+      --surface:      #ffffff;
+      --border:       #dddede;
+      --text:         #111110;
+      --dim:          #6b6b66;
+      --muted:        #a8a8a2;
+      --green:        #2d6a4f;
+      --green-light:  #e8f5ee;
+      --green-border: #c3e6d0;
     }
-    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); padding: 40px 24px 80px; }
-    .wrap { max-width: 580px; margin: 0 auto; }
-    nav { display: flex; align-items: center; gap: 12px; margin-bottom: 56px; }
-    nav a { font-size: 13px; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-    nav a:hover { color: var(--accent); }
-    nav svg { width: 14px; height: 14px; }
-    .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-    h1 { font-family: 'Fraunces', serif; font-size: clamp(32px, 6vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
-    .sub { font-size: 16px; font-weight: 300; color: var(--dim); line-height: 1.6; margin-bottom: 40px; }
-    .contact-card {
-      background: var(--accent-light); border: 1px solid var(--accent-border);
-      border-radius: 20px; padding: 28px 32px; margin-bottom: 40px;
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    .contact-card h2 { font-size: 15px; font-weight: 600; color: #1b4332; margin-bottom: 10px; }
-    .contact-card p { font-size: 14px; color: #2d6a4f; font-weight: 300; line-height: 1.7; margin-bottom: 10px; }
-    .contact-card p:last-of-type { margin-bottom: 16px; }
-    .email-link {
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .orb  { position: absolute; border-radius: 50%; opacity: 0.22; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(234,236,236,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      max-width: 720px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px;
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      text-decoration: none; transition: color .2s;
+    }
+    .nav-back svg { width: 14px; height: 14px; }
+    .nav-back:hover { color: var(--green); }
+    .nav-badge {
+      font-size: 11px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--green);
+      background: var(--green-light); border: 1px solid var(--green-border);
+      padding: 5px 14px; border-radius: 100px;
+    }
+
+    .wrap {
+      max-width: 720px; margin: 0 auto;
+      padding: 52px 24px 80px;
+      position: relative; z-index: 1;
+      animation: fadeUp .45s ease both;
+    }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(34px, 6.5vw, 50px);
+      font-weight: 600; letter-spacing: -0.03em; line-height: 1.1;
+      color: var(--text); margin-bottom: 40px;
+    }
+    h1 em { font-weight: 300; font-style: italic; color: var(--dim); }
+
+    /* contact hero */
+    .card-hero {
+      background: var(--green-light);
+      border: 1px solid var(--green-border);
+      border-radius: 20px; padding: 28px;
+      margin-bottom: 10px;
+      transition: box-shadow .25s;
+    }
+    .card-hero:hover { box-shadow: 0 4px 24px rgba(45,106,79,0.1); }
+    .card-hero h2 { font-size: 16px; font-weight: 600; color: #1b4332; margin-bottom: 8px; }
+    .card-hero p { font-size: 14px; font-weight: 300; color: var(--green); line-height: 1.85; margin-bottom: 12px; }
+    .card-hero p:last-child { margin-bottom: 0; }
+
+    .email-btn {
       display: inline-flex; align-items: center; gap: 8px;
-      background: #2d6a4f; color: white; font-size: 14px; font-weight: 500;
-      padding: 12px 20px; border-radius: 12px; text-decoration: none;
-      transition: background 0.2s;
+      background: var(--green); color: white;
+      font-size: 14px; font-weight: 500; font-family: 'Outfit', sans-serif;
+      padding: 11px 22px; border-radius: 12px;
+      text-decoration: none; margin-top: 4px;
+      transition: background .2s, transform .15s;
     }
-    .email-link:hover { background: #1b4332; }
-    .email-link svg { width: 15px; height: 15px; }
-    .include { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; margin-bottom: 40px; }
-    .include h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 12px; }
-    .include ul { padding-left: 18px; }
-    .include li { font-size: 13px; font-weight: 300; color: var(--dim); line-height: 1.8; }
-    .faq-title { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; margin-bottom: 10px; }
-    .faq-q { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
-    .faq-a { font-size: 13px; font-weight: 300; color: var(--dim); line-height: 1.75; }
-    .faq-a a { color: var(--accent); text-decoration: none; }
-    .faq-a a:hover { text-decoration: underline; }
-    footer { margin-top: 64px; font-size: 11px; color: var(--muted); }
-    footer a { color: inherit; }
+    .email-btn svg { width: 13px; height: 13px; stroke: white; }
+    .email-btn:hover { background: #1b4332; transform: translateY(-1px); text-decoration: none; }
+
+    /* live dot */
+    .live-dot {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 500; color: var(--green);
+      margin-top: 12px;
+    }
+    .live-dot-circle {
+      width: 7px; height: 7px; border-radius: 50%; background: #2d6a4f;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(0.85); }
+    }
+
+    /* what to include */
+    .inset {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px 20px;
+      margin-top: 16px;
+    }
+    .inset-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+    }
+    .inset ul { list-style: none; padding: 0; }
+    .inset li {
+      font-size: 13px; font-weight: 300; color: var(--dim);
+      line-height: 1.75; padding: 3px 0 3px 20px; position: relative;
+    }
+    .inset li::before {
+      content: ''; position: absolute; left: 5px; top: 12px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green); opacity: .4;
+    }
+
+    /* FAQ */
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted);
+      margin: 32px 0 12px;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; margin-bottom: 8px;
+      overflow: hidden; transition: border-color .2s, box-shadow .2s;
+    }
+    details:hover { border-color: var(--green-border); box-shadow: 0 2px 14px rgba(45,106,79,0.06); }
+    details[open] { border-color: var(--green-border); }
+
+    summary {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px; cursor: pointer;
+      font-size: 14px; font-weight: 500; color: var(--text);
+      list-style: none; user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary .chevron {
+      width: 16px; height: 16px; stroke: var(--muted); flex-shrink: 0;
+      transition: transform .25s;
+    }
+    details[open] summary .chevron { transform: rotate(180deg); stroke: var(--green); }
+    details[open] summary { color: var(--green); }
+
+    .faq-body {
+      padding: 0 22px 18px;
+      font-size: 14px; font-weight: 300; color: var(--dim); line-height: 1.85;
+    }
+    .faq-body p { margin-bottom: 10px; }
+    .faq-body p:last-child { margin-bottom: 0; }
+    .faq-body strong { font-weight: 500; color: var(--text); }
+    .faq-body a { color: var(--green); text-decoration: none; }
+    .faq-body a:hover { text-decoration: underline; }
+    .faq-body ul { list-style: none; padding: 0; margin-top: 8px; }
+    .faq-body li {
+      padding: 3px 0 3px 20px; position: relative;
+      font-size: 14px; font-weight: 300; color: var(--dim); line-height: 1.8;
+    }
+    .faq-body li::before {
+      content: ''; position: absolute; left: 5px; top: 12px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green); opacity: .4;
+    }
+
+    footer {
+      max-width: 720px; margin: 0 auto;
+      padding: 0 24px 40px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      font-size: 11px; color: var(--muted);
+      position: relative; z-index: 1;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--green); }
+    .footer-links { display: flex; gap: 16px; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <nav>
-      <a href="/">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+
+  <div class="orbs" aria-hidden="true">
+    <div class="orb" style="width:340px;height:340px;top:-100px;left:-120px;background:radial-gradient(circle,#b2ebf2,#4dd0e1);"></div>
+    <div class="orb" style="width:280px;height:280px;top:2%;right:-90px;background:radial-gradient(circle,#e1bee7,#ce93d8);"></div>
+    <div class="orb" style="width:240px;height:240px;top:38%;left:-60px;background:radial-gradient(circle,#f8bbd0,#f48fb1);"></div>
+    <div class="orb" style="width:220px;height:220px;bottom:22%;left:2%;background:radial-gradient(circle,#c8e6c9,#81c784);"></div>
+    <div class="orb" style="width:200px;height:200px;bottom:10%;right:4%;background:radial-gradient(circle,#fff9c4,#ffe082);"></div>
+  </div>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="nav-back" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         Knock
       </a>
-    </nav>
-
-    <div class="eyebrow">Help</div>
-    <h1>Support</h1>
-    <p class="sub">For help with Knock, reach out — we'll get back to you within 2 business days.</p>
-
-    <div class="contact-card">
-      <h2>Get in touch</h2>
-      <p>Questions about the app, your account, data deletion, or anything else? Email us directly.</p>
-      <a class="email-link" href="mailto:mra454@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        mra454@gmail.com
-      </a>
+      <span class="nav-badge">Help</span>
     </div>
-
-    <div class="include">
-      <h2>What to include</h2>
-      <ul>
-        <li>Your device type (e.g. iPhone 14)</li>
-        <li>iOS version</li>
-        <li>A short description of the issue</li>
-        <li>Screenshots if relevant</li>
-      </ul>
-    </div>
-
-    <div class="faq-title">Common questions</div>
-
-    <div class="faq-item">
-      <div class="faq-q">I don't see anyone nearby</div>
-      <div class="faq-a">Make sure you've checked in to a place and that someone else is also checked in to the same venue. The lobby will appear empty if no one else is present.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Location isn't working</div>
-      <div class="faq-a">Check that location access is enabled for Knock while using the app. Go to Settings → Privacy & Security → Location Services → Knock → set to "While Using the App."</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Messages or knocks are delayed</div>
-      <div class="faq-a">A weak connection can affect real-time updates. Try reopening the app or switching from Wi-Fi to cellular (or vice versa).</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Is Knock anonymous?</div>
-      <div class="faq-a">Yes. No name, email, or phone number is required. You choose a nickname. Revealing anything more — your name, photo, or contact — is always optional and requires mutual consent from both users.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">How do I delete my account?</div>
-      <div class="faq-a">Email <a href="mailto:mra454@gmail.com">mra454@gmail.com</a> and include your anonymous user ID (found in app settings). We'll delete your account and data promptly.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">How do I report a user or inappropriate content?</div>
-      <div class="faq-a">Email <a href="mailto:mra454@gmail.com">mra454@gmail.com</a> with as much detail as possible. We take safety seriously and review all reports.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What data does Knock collect?</div>
-      <div class="faq-a">See our <a href="/privacy">Privacy Policy</a> for full details. Short version: anonymous account, optional nickname and hints, temporary venue presence, and knock/message records. No real names, no phone numbers, no background location tracking.</div>
-    </div>
-
-    <footer>© 2025 Knock &nbsp;·&nbsp; <a href="/privacy">Privacy Policy</a></footer>
   </div>
+
+  <div class="wrap">
+
+    <div class="eyebrow">Support</div>
+    <h1>We're here<br><em>to help.</em></h1>
+
+    <!-- Contact hero -->
+    <div class="card-hero">
+      <h2>Get in touch</h2>
+      <p>Questions, feedback, or something not working? Drop us an email and we'll get back to you quickly.</p>
+      <a class="email-btn" href="mailto:info@knockapp.app">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        info@knockapp.app
+      </a>
+      <div class="live-dot">
+        <div class="live-dot-circle"></div>
+        Usually responds within 2 business days
+      </div>
+
+      <div class="inset">
+        <div class="inset-label">Helpful to include</div>
+        <ul>
+          <li>What you were trying to do</li>
+          <li>What happened instead</li>
+          <li>Your device model and iOS version</li>
+          <li>Your anonymous User ID from app settings (if relevant)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-label">Frequently asked questions</div>
+
+    <details>
+      <summary>
+        How does Knock keep me anonymous?
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-body">
+        <p>You're anonymous by default. Your profile shows only a nickname (not your real name) and an aura color. No other user can see your actual identity.</p>
+        <p>We don't require a phone number, email, or real name to use the app.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        What is a "Knock"?
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-body">
+        <p>A Knock is a short, low-pressure message you send to another person's signal, like a gentle tap on the shoulder. You write a short message to the other person. They can accept or pass silently with no notification either way.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        What are the chat modes?
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-body">
+        <p>There are three modes you can set before or during a session:</p>
+        <ul>
+          <li><strong>Open Chat</strong>, you're free to talk right now</li>
+          <li><strong>Soft Chat</strong>, you're working, but open to a quick hello</li>
+          <li><strong>Buddy Silence</strong>, you want company but not conversation</li>
+        </ul>
+        <p>You can switch modes at any time from the lobby.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        Does Knock track my location?
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-body">
+        <p>Knock uses your location <strong>only while the app is open</strong>, and only to find nearby venues you can check in to. We do not track you in the background, store your GPS coordinates as a record, or build any location history.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        How do I report someone?
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-body">
+        <p>You can pass on any Knock, the other person is never notified. To report a user for inappropriate behavior, email <a href="mailto:info@knockapp.app">info@knockapp.app</a> with as much detail as you're comfortable sharing. We take safety seriously and will act promptly.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        How do I delete my account and data?
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-body">
+        <p>Email <a href="mailto:info@knockapp.app">info@knockapp.app</a> with your deletion request. Include your anonymous User ID if possible (found in app settings). We'll remove your account and associated data promptly.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        Is Knock available on Android?
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-body">
+        <p>Knock is currently iOS-only. Android support is something we're thinking about for the future. Stay tuned.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        Something isn't working, what should I do?
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-body">
+        <p>Try closing and reopening the app first. If the issue persists, email <a href="mailto:info@knockapp.app">info@knockapp.app</a> and describe what happened, your device, and iOS version. Screenshots are always helpful.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <footer>
+    <div>© 2025 Knock</div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/support">Support</a>
+    </div>
+  </footer>
+
 </body>
 </html>
