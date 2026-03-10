@@ -3,173 +3,386 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Knock</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Privacy Policy, Knock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg: #f7f6f3; --surface: #ffffff; --text: #1a1a18; --dim: #5a5a54;
-      --muted: #a8a89e; --accent: #2d6a4f; --accent-light: #e8f5ee;
-      --accent-border: #c3e6d0; --border: #e8e7e2;
+      --bg:           #eaecec;
+      --surface:      #ffffff;
+      --border:       #dddede;
+      --text:         #111110;
+      --dim:          #6b6b66;
+      --muted:        #a8a8a2;
+      --green:        #2d6a4f;
+      --green-light:  #e8f5ee;
+      --green-border: #c3e6d0;
     }
-    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); padding: 40px 24px 80px; }
-    .wrap { max-width: 660px; margin: 0 auto; }
-    nav { display: flex; align-items: center; gap: 12px; margin-bottom: 56px; }
-    nav a { font-size: 13px; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-    nav a:hover { color: var(--accent); }
-    nav svg { width: 14px; height: 14px; }
-    .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-    h1 { font-family: 'Fraunces', serif; font-size: clamp(32px, 6vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 10px; }
-    .meta { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 48px; }
-    .meta span { display: block; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; margin-bottom: 16px; }
-    h2 { font-size: 15px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
-    p { font-size: 14px; font-weight: 300; color: var(--dim); line-height: 1.8; margin-bottom: 12px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* pastel orbs, matching the landing page */
+    .orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .orb  {
+      position: absolute; border-radius: 50%; opacity: 0.22;
+      filter: blur(0px);
+    }
+
+    /* topbar */
+    .topbar {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(234,236,236,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      max-width: 720px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px;
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      text-decoration: none; transition: color .2s;
+    }
+    .nav-back svg { width: 14px; height: 14px; }
+    .nav-back:hover { color: var(--green); }
+    .nav-badge {
+      font-size: 11px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--green);
+      background: var(--green-light); border: 1px solid var(--green-border);
+      padding: 5px 14px; border-radius: 100px;
+    }
+
+    /* layout */
+    .wrap {
+      max-width: 720px; margin: 0 auto;
+      padding: 52px 24px 80px;
+      position: relative; z-index: 1;
+      animation: fadeUp .45s ease both;
+    }
+
+    /* header */
+    .eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(34px, 6.5vw, 50px);
+      font-weight: 600; letter-spacing: -0.03em; line-height: 1.1;
+      color: var(--text); margin-bottom: 18px;
+    }
+    h1 em { font-weight: 300; font-style: italic; color: var(--dim); }
+
+    .meta {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px;
+    }
+    .meta-pill {
+      font-size: 12px; color: var(--dim);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 14px;
+    }
+    .meta-pill a { color: var(--green); text-decoration: none; }
+    .meta-pill a:hover { text-decoration: underline; }
+
+    /* cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 28px;
+      margin-bottom: 10px;
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .card:hover {
+      border-color: var(--green-border);
+      box-shadow: 0 4px 24px rgba(45,106,79,0.07);
+    }
+    .card-head {
+      display: flex; align-items: center; gap: 11px; margin-bottom: 14px;
+    }
+    .card-icon {
+      width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+      background: var(--green-light); border: 1px solid var(--green-border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-icon svg { width: 15px; height: 15px; stroke: var(--green); }
+    h2 { font-size: 15px; font-weight: 600; }
+
+    p {
+      font-size: 14px; font-weight: 300; color: var(--dim);
+      line-height: 1.85; margin-bottom: 12px;
+    }
     p:last-child { margin-bottom: 0; }
-    ul { padding-left: 18px; margin-bottom: 12px; }
+    p strong { font-weight: 500; color: var(--text); }
+
+    ul { list-style: none; padding: 0; margin-bottom: 12px; }
     ul:last-child { margin-bottom: 0; }
-    li { font-size: 14px; font-weight: 300; color: var(--dim); line-height: 1.8; margin-bottom: 4px; }
-    strong { font-weight: 500; color: var(--text); }
-    a { color: var(--accent); text-decoration: none; }
+    li {
+      font-size: 14px; font-weight: 300; color: var(--dim);
+      line-height: 1.85; padding: 3px 0 3px 22px; position: relative;
+    }
+    li::before {
+      content: ''; position: absolute; left: 6px; top: 13px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green); opacity: .45;
+    }
+    .list-no li::before { background: #c0392b; opacity: .5; }
+    li strong { font-weight: 500; color: var(--text); }
+
+    a { color: var(--green); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .highlight { background: var(--accent-light); border: 1px solid var(--accent-border); border-radius: 10px; padding: 12px 16px; margin-top: 12px; font-size: 13px; color: #2d6a4f; font-weight: 400; line-height: 1.7; }
-    .contact-card { background: var(--accent-light); border: 1px solid var(--accent-border); border-radius: 16px; padding: 28px 32px; margin-top: 32px; }
-    .contact-card h2 { color: #1b4332; }
-    .contact-card p { color: #2d6a4f; }
-    .contact-card strong { color: #1b4332; }
-    .contact-card a { color: #1b4332; font-weight: 500; }
+
+    .highlight {
+      background: var(--green-light); border: 1px solid var(--green-border);
+      border-radius: 12px; padding: 14px 18px; margin-top: 14px;
+      font-size: 13px; color: var(--green); line-height: 1.75;
+    }
+    .highlight a { color: #1b4332; font-weight: 500; }
+
+    /* contact card */
+    .card-contact {
+      background: var(--green-light);
+      border: 1px solid var(--green-border);
+    }
+    .card-contact:hover { box-shadow: 0 4px 24px rgba(45,106,79,0.1); }
+    .card-contact h2 { color: #1b4332; }
+    .card-contact p { color: var(--green); }
+    .card-contact .card-icon { background: rgba(45,106,79,0.12); }
+
+    .email-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: white;
+      font-size: 14px; font-weight: 500; font-family: 'Outfit', sans-serif;
+      padding: 11px 22px; border-radius: 12px;
+      text-decoration: none; margin-top: 14px;
+      transition: background .2s, transform .15s;
+    }
+    .email-btn svg { width: 13px; height: 13px; stroke: white; }
+    .email-btn:hover { background: #1b4332; transform: translateY(-1px); text-decoration: none; }
+
+    footer {
+      max-width: 720px; margin: 0 auto;
+      padding: 0 24px 40px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      font-size: 11px; color: var(--muted);
+      position: relative; z-index: 1;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--green); }
+    .footer-links { display: flex; gap: 16px; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <nav>
-      <a href="/">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+
+  <!-- pastel orbs matching knockapp.app landing -->
+  <div class="orbs" aria-hidden="true">
+    <div class="orb" style="width:340px;height:340px;top:-100px;left:-120px;background:radial-gradient(circle,#b2ebf2,#4dd0e1);"></div>
+    <div class="orb" style="width:280px;height:280px;top:2%;right:-90px;background:radial-gradient(circle,#e1bee7,#ce93d8);"></div>
+    <div class="orb" style="width:240px;height:240px;top:38%;left:-60px;background:radial-gradient(circle,#f8bbd0,#f48fb1);"></div>
+    <div class="orb" style="width:220px;height:220px;bottom:22%;left:2%;background:radial-gradient(circle,#c8e6c9,#81c784);"></div>
+    <div class="orb" style="width:200px;height:200px;bottom:10%;right:4%;background:radial-gradient(circle,#fff9c4,#ffe082);"></div>
+  </div>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="nav-back" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         Knock
       </a>
-    </nav>
+      <span class="nav-badge">Legal</span>
+    </div>
+  </div>
 
-    <div class="eyebrow">Legal</div>
-    <h1>Privacy Policy</h1>
+  <div class="wrap">
+
+    <div class="eyebrow">Privacy Policy</div>
+    <h1>Your privacy,<br><em>our foundation.</em></h1>
+
     <div class="meta">
-      <span>Effective date: March 9, 2025</span>
-      <span>Operator: Knock</span>
-      <span>Contact: <a href="mailto:mra454@gmail.com">mra454@gmail.com</a></span>
+      <span class="meta-pill">Effective: March 9, 2025</span>
+      <span class="meta-pill">Operator: Knock</span>
+      <span class="meta-pill"><a href="mailto:info@knockapp.app">info@knockapp.app</a></span>
     </div>
 
     <div class="card">
-      <h2>What Knock is</h2>
-      <p>Knock is a venue-based social app that helps people signal they are open to connection in a shared place — a coffee shop, library, or wherever you find yourself. You can check in, see who else is there, send a knock, and start chatting if they accept.</p>
-      <p>Your privacy is the foundation of how we've designed this app. You are anonymous by default. Revealing your name, photo, or contact is always optional and requires mutual consent.</p>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
+        <h2>What Knock is</h2>
+      </div>
+      <p>Knock is a venue-based social app that helps people signal they're open to connection, at a coffee shop, library, or wherever you find yourself. Check in, see who else is there, send a knock, and chat if they accept.</p>
+      <p>Your privacy is the foundation of how we've designed this. <strong>You are anonymous by default.</strong> Any further details you share during a conversation are entirely your choice.</p>
     </div>
 
     <div class="card">
-      <h2>Information we collect</h2>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <h2>Information we collect</h2>
+      </div>
       <p>When you use Knock, we may collect:</p>
       <ul>
-        <li>Your <strong>nickname</strong> (not your real name — you choose this)</li>
+        <li>Your <strong>nickname</strong> (not your real name, you choose this)</li>
         <li>Your <strong>selected aura</strong> (a color/vibe preference)</li>
-        <li>Optional <strong>profile hints</strong>, such as "Ask me about," "Feeling," and "Here for"</li>
-        <li>Your <strong>anonymous account identifier</strong> (generated automatically, not tied to your identity)</li>
+        <li>Your <strong>anonymous account identifier</strong> (auto-generated, not tied to your identity)</li>
         <li>The <strong>venue you check in to</strong></li>
-        <li><strong>Knocks</strong> you send or receive</li>
-        <li><strong>Chat messages</strong> sent through the app</li>
+        <li><strong>Knocks</strong> you send or receive, and <strong>chat messages</strong></li>
       </ul>
-      <p>We do not collect your real name, email address, or phone number. No account registration is required.</p>
+      <p>We do not collect your real name, email, or phone number. <strong>No account registration is required.</strong></p>
     </div>
 
     <div class="card">
-      <h2>Location data</h2>
-      <p>Knock uses your location <strong>while the app is open</strong> to help identify nearby places you can check in to. That's it.</p>
-      <ul>
-        <li>We do <strong>not</strong> use your location in the background</li>
-        <li>We do <strong>not</strong> store your raw GPS coordinates in our backend as part of the normal app flow</li>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h2>Location data</h2>
+      </div>
+      <p>Knock uses your location <strong>while the app is open</strong> to identify nearby places you can check in to. That's it.</p>
+      <ul class="list-no">
+        <li>We do <strong>not</strong> track your location in the background</li>
+        <li>We do <strong>not</strong> store your raw GPS coordinates as part of normal app flow</li>
         <li>We do <strong>not</strong> track your movement over time</li>
       </ul>
-      <div class="highlight">If Google Places is enabled in the app, your device may send location data to Google in order to retrieve a list of nearby venues. This is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</div>
+      <div class="highlight">If Google Places is enabled, your device may send location data to Google to retrieve nearby venues. This is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</div>
     </div>
 
     <div class="card">
-      <h2>How we use your information</h2>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <h2>How we use your information</h2>
+      </div>
       <p>We use data only to make the app work:</p>
       <ul>
-        <li>Let you check in to a venue and appear to others at the same place</li>
-        <li>Show you other signals checked in to the same venue</li>
-        <li>Deliver knocks and chat messages between matched users</li>
-        <li>Support moderation and safety features (including banned-word filters)</li>
+        <li>Let you check in and appear to others at the same venue</li>
+        <li>Show you signals checked in to the same place</li>
+        <li>Deliver knocks and messages between matched users</li>
+        <li>Support moderation and safety features</li>
         <li>Keep the app functioning and improve reliability</li>
       </ul>
-      <p>We do not use your data for advertising, profiling, or any purpose outside of operating the app.</p>
+      <p>We do <strong>not</strong> use your data for advertising, profiling, or any purpose outside of operating the app.</p>
     </div>
 
     <div class="card">
-      <h2>Authentication and backend services</h2>
-      <p>Knock uses <strong>Supabase</strong> for anonymous authentication, data storage, and real-time messaging. Supabase may process and store your anonymous user ID, nickname, aura, venue presence, knocks, and chat messages. Supabase hosts data on AWS infrastructure and maintains its own security practices.</p>
-      <p>Data is transmitted over encrypted HTTPS connections. Authentication tokens are stored locally on your device. We do not store passwords because none are required.</p>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="11" width="20" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h2>Authentication and backend services</h2>
+      </div>
+      <p>Knock uses <strong>Supabase</strong> for anonymous authentication, data storage, and real-time messaging. Supabase may process your anonymous user ID, nickname, aura, venue presence, knocks, and messages. Data is hosted on AWS infrastructure.</p>
+      <p>Data is transmitted over encrypted HTTPS. Authentication tokens are stored locally on your device. No passwords are required.</p>
     </div>
 
     <div class="card">
-      <h2>Messaging and moderation</h2>
-      <p>Messages and knock prompts are stored on our backend so that chats can function in real time. Knock uses moderation tools — including a banned-word filter — to reduce abusive or unsafe content. We may review flagged content to enforce community safety.</p>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <h2>Messaging and moderation</h2>
+      </div>
+      <p>Messages are stored so chats can function in real time. Knock uses a banned-word filter and may review flagged content to enforce community safety.</p>
     </div>
 
     <div class="card">
-      <h2>Data sharing</h2>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></div>
+        <h2>Data sharing</h2>
+      </div>
       <p><strong>We do not sell your personal information.</strong></p>
       <p>We share limited data only with service providers that help us operate the app:</p>
       <ul>
-        <li><strong>Supabase</strong> — authentication, backend data, and real-time messaging</li>
-        <li><strong>Google Places</strong> — if enabled, for nearby venue lookup (location data only, at check-in time)</li>
+        <li><strong>Supabase</strong>, authentication, backend data, and real-time messaging</li>
+        <li><strong>Google Places</strong>, if enabled, for nearby venue lookup at check-in time</li>
       </ul>
-      <p>We do not share your data with advertisers, data brokers, or any third party for marketing purposes.</p>
+      <p>We do not share your data with advertisers, data brokers, or any third party for marketing.</p>
     </div>
 
     <div class="card">
-      <h2>What we don't do</h2>
-      <ul>
-        <li>We do not sell, rent, or share your data for marketing</li>
-        <li>We do not use Bluetooth or QR codes to identify or track you</li>
-        <li>We do not track your location in the background</li>
-        <li>We do not require a real name, email, or phone number at any point</li>
-        <li>We do not show your profile to anyone outside your current venue session</li>
-        <li>We do not use cross-app tracking or advertising SDKs</li>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h2>What we don't do</h2>
+      </div>
+      <ul class="list-no">
+        <li>Sell, rent, or share your data for marketing</li>
+        <li>Use Bluetooth or QR codes to identify or track you</li>
+        <li>Track your location in the background</li>
+        <li>Require a real name, email, or phone number</li>
+        <li>Show your profile outside of your current venue session</li>
+        <li>Use cross-app tracking or advertising SDKs</li>
       </ul>
     </div>
 
     <div class="card">
-      <h2>Your choices</h2>
-      <p>You are in control of your experience. You can choose:</p>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <h2>Your choices</h2>
+      </div>
       <ul>
         <li>Whether to check in to a venue at all</li>
-        <li>What nickname and hints to display</li>
+        <li>What nickname to display</li>
         <li>Whether to accept or pass on any Knock</li>
-        <li>Whether to reveal your name, photo, or contact info (always optional, always mutual)</li>
+        
         <li>To leave a venue or end a chat at any time</li>
       </ul>
-      <p>To request deletion of your account and all associated data, email us at <a href="mailto:mra454@gmail.com">mra454@gmail.com</a>. Include your anonymous user ID if possible (found in app settings).</p>
+      <p>To request deletion of your account and all associated data, email <a href="mailto:info@knockapp.app">info@knockapp.app</a>.</p>
     </div>
 
     <div class="card">
-      <h2>Data retention</h2>
-      <p>Venue presence records are ephemeral and cleared when you leave or your session ends. Knock and message records are retained for the duration of the session and a short period afterward for safety review. We do not retain data longer than reasonably necessary to operate the service, comply with legal obligations, or resolve disputes.</p>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg></div>
+        <h2>Data retention</h2>
+      </div>
+      <p>Venue presence records are ephemeral and cleared when you leave or your session ends. Knock and message records are retained for the duration of the session and a short period afterward for safety review.</p>
     </div>
 
     <div class="card">
-      <h2>Children's privacy</h2>
-      <p>Knock is not intended for children under 13. We do not knowingly collect data from anyone under 13. If you believe a child has provided information through the app, please contact us and we will delete it promptly.</p>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h2>Children's privacy</h2>
+      </div>
+      <p>Knock is not intended for children under 13. We do not knowingly collect data from anyone under 13. If you believe a child has provided information through the app, contact us and we will delete it promptly.</p>
     </div>
 
     <div class="card">
-      <h2>Changes to this policy</h2>
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M12 13v6"/><path d="m15 16-3-3-3 3"/></svg></div>
+        <h2>Changes to this policy</h2>
+      </div>
       <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the effective date at the top of this page. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
     </div>
 
-    <div class="contact-card">
-      <h2>Contact</h2>
-      <p>Questions about this privacy policy, your data, or a deletion request?</p>
-      <p style="margin-top:10px;"><strong>Email:</strong> <a href="mailto:mra454@gmail.com">mra454@gmail.com</a></p>
-      <p style="margin-top:6px; font-size:13px;">We aim to respond within 2 business days.</p>
+    <div class="card card-contact">
+      <div class="card-head">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+        <h2>Contact</h2>
+      </div>
+      <p>Questions about this policy, your data, or a deletion request?</p>
+      <a class="email-btn" href="mailto:info@knockapp.app">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        info@knockapp.app
+      </a>
+      <p style="margin-top:10px;font-size:12px;opacity:.75;">We aim to respond within 2 business days.</p>
     </div>
+
   </div>
+
+  <footer>
+    <div>© 2025 Knock</div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/support">Support</a>
+    </div>
+  </footer>
+
 </body>
 </html>
