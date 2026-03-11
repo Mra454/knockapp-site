@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support, Knock</title>
+  <title>Support | Knock</title>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +26,6 @@
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Outfit', sans-serif;
       background: var(--bg);
@@ -83,7 +82,6 @@
     }
     h1 em { font-weight: 300; font-style: italic; color: var(--dim); }
 
-    /* contact hero */
     .card-hero {
       background: var(--green-light);
       border: 1px solid var(--green-border);
@@ -94,7 +92,6 @@
     .card-hero:hover { box-shadow: 0 4px 24px rgba(45,106,79,0.1); }
     .card-hero h2 { font-size: 16px; font-weight: 600; color: #1b4332; margin-bottom: 8px; }
     .card-hero p { font-size: 14px; font-weight: 300; color: var(--green); line-height: 1.85; margin-bottom: 12px; }
-    .card-hero p:last-child { margin-bottom: 0; }
 
     .email-btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -107,7 +104,6 @@
     .email-btn svg { width: 13px; height: 13px; stroke: white; }
     .email-btn:hover { background: #1b4332; transform: translateY(-1px); text-decoration: none; }
 
-    /* live dot */
     .live-dot {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 11px; font-weight: 500; color: var(--green);
@@ -122,7 +118,26 @@
       50%       { opacity: .5; transform: scale(0.85); }
     }
 
-    /* what to include */
+    .contact-details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px 20px;
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 520px) { .contact-details { grid-template-columns: 1fr; } }
+    .contact-detail-label {
+      font-size: 10px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+    }
+    .contact-detail-value {
+      font-size: 13px; font-weight: 400; color: var(--dim);
+    }
+    .contact-detail-value a { color: var(--green); text-decoration: none; }
+    .contact-detail-value a:hover { text-decoration: underline; }
+
     .inset {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -144,7 +159,6 @@
       background: var(--green); opacity: .4;
     }
 
-    /* FAQ */
     .section-label {
       font-size: 11px; font-weight: 600; letter-spacing: .1em;
       text-transform: uppercase; color: var(--muted);
@@ -231,7 +245,6 @@
     <div class="eyebrow">Support</div>
     <h1>We're here<br><em>to help.</em></h1>
 
-    <!-- Contact hero -->
     <div class="card-hero">
       <h2>Get in touch</h2>
       <p>Questions, feedback, or something not working? Drop us an email and we'll get back to you quickly.</p>
@@ -244,18 +257,36 @@
         Usually responds within 2 business days
       </div>
 
+      <div class="contact-details">
+        <div class="contact-detail-item">
+          <div class="contact-detail-label">Legal name</div>
+          <div class="contact-detail-value">Vismu LLC</div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-value"><a href="mailto:info@knockapp.app">info@knockapp.app</a></div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="contact-detail-label">Phone</div>
+          <div class="contact-detail-value"><a href="tel:+17082698681">(708) 269-8681</a></div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="contact-detail-label">Mailing address</div>
+          <div class="contact-detail-value">262 Chapman Rd, Ste 240<br>Newark, DE 19702</div>
+        </div>
+      </div>
+
       <div class="inset">
         <div class="inset-label">Helpful to include</div>
         <ul>
           <li>What you were trying to do</li>
           <li>What happened instead</li>
           <li>Your device model and iOS version</li>
-          <li>Your anonymous User ID from app settings (if relevant)</li>
+          <li>Your anonymous User ID from app Settings (if relevant)</li>
         </ul>
       </div>
     </div>
 
-    <!-- FAQ -->
     <div class="section-label">Frequently asked questions</div>
 
     <details>
@@ -307,11 +338,12 @@
 
     <details>
       <summary>
-        How do I report someone?
+        How do I block or report someone?
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
       <div class="faq-body">
-        <p>You can pass on any Knock, the other person is never notified. To report a user for inappropriate behavior, email <a href="mailto:info@knockapp.app">info@knockapp.app</a> with as much detail as you're comfortable sharing. We take safety seriously and will act promptly.</p>
+        <p>You can pass on any Knock silently, the other person is never notified. To block a user, tap their signal and select <strong>Block</strong>. To report inappropriate content or behavior, tap <strong>Report</strong> on the signal or message. Both actions are available without leaving the app.</p>
+        <p>You can also email <a href="mailto:info@knockapp.app">info@knockapp.app</a> with as much detail as you're comfortable sharing. We take safety seriously and will act promptly.</p>
       </div>
     </details>
 
@@ -321,7 +353,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
       <div class="faq-body">
-        <p>Email <a href="mailto:info@knockapp.app">info@knockapp.app</a> with your deletion request. Include your anonymous User ID if possible (found in app settings). We'll remove your account and associated data promptly.</p>
+        <p>Go to <strong>Settings</strong> inside the app and tap <strong>Delete Account</strong>. We will delete your account and associated data, except any information we are required to temporarily retain for safety, fraud, or abuse review as described in our <a href="/privacy">Privacy Policy</a>.</p>
+        <p>You can also email <a href="mailto:info@knockapp.app">info@knockapp.app</a> with your deletion request. Include your anonymous User ID if possible (found in app Settings). We'll remove everything promptly.</p>
       </div>
     </details>
 
@@ -341,15 +374,16 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
       <div class="faq-body">
-        <p>Try closing and reopening the app first. If the issue persists, email <a href="mailto:info@knockapp.app">info@knockapp.app</a> and describe what happened, your device, and iOS version. Screenshots are always helpful.</p>
+        <p>Try closing and reopening the app first. If the issue persists, email <a href="mailto:info@knockapp.app">info@knockapp.app</a> with your device model, iOS version, and a description of what happened. We'll look into it.</p>
       </div>
     </details>
 
   </div>
 
   <footer>
-    <div>© 2025 Knock</div>
+    <span>© 2026 Knock</span>
     <div class="footer-links">
+      <a href="/">Home</a>
       <a href="/privacy">Privacy Policy</a>
       <a href="/support">Support</a>
     </div>
